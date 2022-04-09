@@ -7,7 +7,7 @@ export default function MainPage(props) {
 
     const getTenQuestions = async () => {
         try {
-            const response = await axios("http://jservice.io/api/random?count=10")
+            const response = await fetch("https://jservice.io/api/random?count=10")
             const data = await response.json()
             setQuestions(data)
         } catch (err) {
@@ -17,7 +17,7 @@ export default function MainPage(props) {
 
     const getData = async () => {
         try {
-            const response = await axios("https://jservice.io/api/random")
+            const response = await fetch("https://jservice.io/api/random")
             const data = await response.json()
             setQuestion(data)
         } catch (err) {
@@ -59,7 +59,6 @@ export default function MainPage(props) {
                         </div>
                         <h2>Let's Play!</h2>
                         <button className="button4" onClick={() => { return getData(), setHide(true) }}>Get Question</button>
-                        <button className="getTenQuestions" onClick={() => { return getData(), setHide(true) }}>Get 10 Questions</button>
                         <h2>Category: <span>{item.category.title}</span></h2>
                         <h2 className="points">Points: <span>{item.value}</span></h2>
                         <h2>Question: <span>{item.question}</span></h2>
